@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DINOJUL's Fun Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #08090b;
+      color: #dedede;
+      font-family: Consolas, monospace;
+      text-align: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .signal {
+      color: #4aa54d;
+      letter-spacing: 5px;
+      font-size: 12px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 8vw, 64px);
+      letter-spacing: 5px;
+      color: #eeeeee;
+      text-shadow: 0 0 18px #2c7d1e;
+    }
+
+    .description {
+      color: #85858c;
+      line-height: 1.8;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 17px 24px;
+      border: 1px solid #377932;
+      background: #0d160d;
+      color: #a2e6a3;
+      font: inherit;
+      cursor: pointer;
+      letter-spacing: 2px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      background: #113210;
+      box-shadow: 0 0 22px #206125;
+    }
+
+    #message {
+      min-height: 55px;
+      margin-top: 30px;
+      line-height: 1.8;
+      color: #8cc18c;
+    }
+
+    a {
+      color: #a6e6a2;
+    }
+
+    footer {
+      margin-top: 55px;
+      color: #55555b;
+      font-size: 11px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <p class="signal">DINOJUL STATUS : ERROR</p>
+
+    <h1>DINOJUL's Fun Website</h1>
+
+    <p class="description">
+      Teleport to somewhere that will be fun!
+      <br>
+      You should try this click… BOOM!
+    </p>
+
+    <button id="discover">TIME TO OPEN PORTAL?</button>
+
+    <p id="message" aria-live="polite">
+      You should try to click this button and pop up!
+    </p>
+
+    <footer>
+      Im secretly become a furry UwU
+    </footer>
+  </main>
+
+  <script>
+    const places = [
+      {
+        name: "Pointing anywhere?",
+        url: "https://pointerpointer.com/"
+      },
+      {
+        name: "DO NOT CLICK ON THIS!!! TRUST ME!!!",
+        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      },
+      {
+        name: "A fun website where you play this game like Dino Running :D",
+        url: "https://trex-runner.com/nyancat/"
+      },
+       {
+        name: "Website showing images of cute cats :3",
+        url: "https://oneclickcatpic.com"
+      },
+      {
+        name: "Oh no no no! Do not click the website!",
+        url: "https://thatsthefinger.com"
+      }
+    ];
+
+    const button = document.querySelector("#discover");
+    const message = document.querySelector("#message");
+
+    let previous = -1;
+
+    button.addEventListener("click", function () {
+      let index;
+
+      do {
+        index = Math.floor(Math.random() * places.length);
+      } while (places.length > 1 && index === previous);
+
+      previous = index;
+
+      const place = places[index];
+
+      message.textContent = "FOUND :  " + place.name;
+
+      const link = document.createElement("a");
+      link.href = place.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = " CLICK HERE LEAD YOU TO THE COOL WEBSITE! ↗";
+
+      message.appendChild(document.createElement("br"));
+      message.appendChild(link);
+    });
+  </script>
+</body>
+</html>
