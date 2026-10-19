@@ -1,2 +1,2 @@
-# DINOJULfunWebsite.com
+# dinojulUwU.github.io
 DINOJUL's FUN WEBSITE!
